@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Generate your own cringe-worthy bio with Bio Cringe. Hacking bios one crypto AI hacktivist growth mindset at a time!">
+    <title>Bio Cringe - The Obnoxious Social Media Bio Generator</title>
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8SFQ4L4ZGP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+gtag('config', 'G-8SFQ4L4ZGP');
+</script>
+<meta property="og:title" content="BioCringe - The Obnoxious Social Media Bio Generator">
+<meta property="og:description" content="Generate your own cringe-worthy bio with Bio Cringe. Hacking bios one crypto AI hacktivist growth mindset at a time!">
+<meta property="og:image" content="https://biocringe.com/OG.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://biocringe.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://biocringe.com/OG.png">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #ffdd57;
+            color: black;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden; /* ✅ Prevents horizontal scrolling */
+            margin: 0;
+            padding: 20px 0; /* ✅ Adds spacing above the white container */
+        }
+        .container {
+            max-width: 90%;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            color: black;
+            word-wrap: break-word;
+            overflow: hidden; /* ✅ Prevents child elements from causing scroll */
+        }
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        .flex-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .buttons-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button, select, a {
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%; /* ✅ Ensures all buttons (including coffee button) are equal */
+            max-width: 300px; /* ✅ Prevents them from getting too large */
+        }
+        button:hover, a:hover {
+            transform: scale(1.05);
+        }
+        select {
+            color: black;
+            font-weight: normal;
+            padding-right: 50px;
+            background-position: right 10px center;
+        }
+        .generate-btn {
+            background-color: #ff4757;
+        }
+        .generate-btn:hover {
+            background-color: #e84118;
+        }
+        .copy-btn {
+            background-color: #28a745;
+        }
+        .copy-btn:hover {
+            background-color: #218838;
+        }
+        .tweet-btn {
+            background-color: #1DA1F2;
+        }
+        .tweet-btn:hover {
+            background-color: #0d8ddc;
+        }
+        .coffee-btn {
+            background-color: #ffdd57;
+            color: black;
+        }
+        .coffee-btn:hover {
+            background-color: #ffcc33;
+        }
+        #bio-output {
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 18px;
+            min-height: 30px;
+        }
+        .logo-container img {
+            width: 200px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ✅ Mobile Responsiveness Fixes */
+        @media (max-width: 600px) {
+            .buttons-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .flex-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            
+            button, select {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .logo-container img {
+                width: 150px;
+            }
+
+            .buttons-row button, .buttons-row a {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .coffee-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .footer-text {
+    text-align: center;
+    font-size: 16px;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* ✅ Ensures space between items */
+    margin-top: 5px;
+}
+
+.footer-links a {
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.footer-divider {
+    font-weight: bold;
+    color: black;
+}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://biocringe.com/BioCringe-Logo.png" alt="Bio Cringe Logo">
+        </div>
+        <h1>Obnoxious Social Media Bio Generator</h1>
+        <div class="flex-row">
+            <label for="level">Choose Obnoxiousness Level:</label>
+            <select id="level">
+                <option value="mild">Just a Little Delusional</option>
+                <option value="grandeur">Delusions of Grandeur</option>
+                <option value="medium">Peak Delusion</option>
+                <option value="greatness">Aiming for Greatness</option>
+                <option value="extreme">Full-On Guru</option>
+            </select>
+            <button class="generate-btn" onclick="generateBio()">Generate</button>
+        </div>
+        <p id="bio-output"></p>
+        <div class="buttons-row">
+            <button class="copy-btn" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+            <button class="tweet-btn" onclick="tweetBio()">🐤 Tweet This</button>
+            <a class="coffee-btn" href="https://ko-fi.com/lukedunsmoto" target="_blank">☕ Buy Me a Coffee</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="footer-text">
+        Built by Luke Dunsmore: Just for Fun Folks, No Shade!
+        <br>
+        <center><span class="footer-links">
+            <a href="mailto:lukedunsmoto@gmail.com">Email Me</a><a href="https://lukedunsmore.com" target="_blank">lukedunsmore.com</a></span></center>
+    </div>        
+    <script>
+        function copyToClipboard() {
+            const bioOutput = document.getElementById("bio-output");
+            if (!bioOutput.textContent) {
+                alert("No bio to copy! Generate one first.");
+                return;
+            }
+            navigator.clipboard.writeText(bioOutput.textContent)
+                .then(() => alert("Bio copied to clipboard!"))
+                .catch(err => console.error("Failed to copy text: ", err));
+        }
+
+        function tweetBio() {
+            const bioOutput = document.getElementById("bio-output");
+            if (!bioOutput.textContent) {
+                alert("No bio to tweet! Generate one first.");
+                return;
+            }
+            const tweetText = encodeURIComponent(bioOutput.textContent);
+            const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
+            window.open(tweetUrl, "_blank");
+        }
+
+        function generateBio() {
+            const level = document.getElementById("level").value;
+            const bioOutput = document.getElementById("bio-output");
+            const phrases = {
+    mild: [
+        "Side hustle mogul (current revenue: £3.27) 💼🚀",
+        "Future billionaire, current loyalty card collector 💰🔖",
+        "Manifesting my dream car... still on the bus 🚗✨",
+        "Passive income enthusiast, still figuring out the income part 💡💸",
+        "Social media marketing expert (mum liked my last post) 📲🔥",
+        "Serial entrepreneur… in my head 🏢🧠",
+        "Founder of an empire (just need a product) 🚀💰",
+        "Self-made success story, just waiting for the success part 📖🏆",
+        "Bootstrapping my startup with Tesco meal deals 🥪💰",
+        "Networking my way to the top… via LinkedIn comments 📩🤝",
+        "Crypto expert (wallet currently empty) 📉🤞",
+        "Etsy shop owner with one sale (to myself) 🛍️🔥",
+        "Manifesting wealth… still using free trials 🔄💸",
+        "Started a blog, now waiting for the book deal ✍️📚",
+        "Life coach (if my own counts) 🧘‍♂️💬",
+        "Podcast host (zero episodes recorded) 🎤🎧",
+        "Currently bootstrapping my way to the top… with my overdraft 💳📈",
+        "Tech startup visionary (no coding skills, but big dreams) 💡👨‍💻",
+        "Early-stage investor (bought one Dogecoin) 🚀🐕",
+        "Scaling my empire—just need a business idea first 🏢📈",
+        "Future landlord, current spare room tenant 🏡💰",
+        "Dreaming of Forbes, currently on Indeed 🏆📑",
+        "Booked a WeWork desk, now just need a company 💼✨",
+        "Innovator in the making (watch this space) 👀🚀",
+        "Waiting for my viral moment… still refreshing TikTok 🎥🔥"
+    ],
+    grandeur: [
+        "Scaling my empire… one Canva template at a time 🎨📈",
+        "Investor in disruptive tech (bought one Bitcoin fraction) 🤑🚀",
+        "Networking my way to the top… via cold DMs 📩🤝",
+        "Building a personal brand (one LinkedIn post at a time) 💼✨",
+        "Just waiting for Forbes to recognize my genius 🏆📚",
+        "Founder, CEO, and only employee of my startup 🚀💡",
+        "Manifesting an IPO for my side hustle 📈🔮",
+        "Reading 'Think & Grow Rich'… so I'm basically rich now 📚💸",
+        "Life coach with no life experience yet 🤯🎤",
+        "One TEDx talk away from billionaire status 🎧💰",
+        "Monetizing my mindset—any day now 💡💵",
+        "Personal branding expert (if shouting on Twitter counts) 📣🔥",
+        "Waiting for my angel investor… or just a regular investor 💼💰",
+        "Passive income strategist, active bank account struggler 🏦📉",
+        "Scaling a six-figure business (currently at two figures) 💰📈",
+        "E-commerce giant (Etsy store pending) 🛒🚀",
+        "The next Elon Musk, minus the billions 🚀💡",
+        "Selling success strategies… once I find some 📊🔥",
+        "Crypto tycoon in the making (just need the crypto part) 🤑📉",
+        "Future startup unicorn, current freelancer with a Wix site 🦄💻",
+        "Thought leader (mostly my own thoughts) 🧠📢",
+        "Passive income is the goal, currently just working nonstop 🏦💼",
+        "Reading business books = basically an MBA now 🎓📖",
+        "Scaling my first brand… once I register it 💡📈",
+        "Building a generational wealth strategy… for future generations 🏦💸"
+    ],
+    medium: [
+        "Personal brand so strong, even I believe it now 🏆🚀",
+        "Grinding 25/8 because 24/7 isn’t enough ⏰💸",
+        "Manifesting millions while ignoring my overdraft ✨💳",
+        "Follow me for business tips (but don’t check my bank account) 📈🤫",
+        "Taking preorders for a course I haven’t written yet 🎓🔥",
+        "High-value individual with low-value assets 🏡📉",
+        "Business coach who just finished their first business book 📚💡",
+        "Crypto millionaire* (*In 2021) 🤑📉",
+        "DM me for mentorship (I need one too) 📩🎤",
+        "Scaling a 7-figure business (currently at 3 figures) 💰📈",
+        "Just one viral thread away from billionaire status 🧵💸",
+        "Passive income empire in progress… loading ⏳📈",
+        "Turning my passion into profit (or trying to) 🏆💡",
+        "Building generational wealth… for the next generation, hopefully 💰📊",
+        "The hustle never stops (but my bank balance does) 🏦😅",
+        "Scaling my empire one Reels post at a time 🎥📈",
+        "Investing in real estate (browsing Zillow counts, right?) 🏡💰",
+        "Financial freedom loading… slowly ⏳💸",
+        "Founder of multiple income streams (so far, just one trickle) 🌊📈",
+        "Life optimization coach—still optimizing my own life first 📆💡",
+        "Hustling my way out of the 9-5, straight into the 24/7 🔄💼",
+        "The next big thing… I just don’t know what it is yet 🤔🚀",
+        "Scaling my empire, just need WiFi first 🌎📡",
+        "Seven-figure mindset, three-figure revenue 💸📈",
+        "One consulting call away from making it big 📞💼"
+    ],
+    greatness: [
+        "One webinar away from my breakthrough 🎓💡",
+        "Scaling my empire, just need a product first 🚀💰",
+        "Grinding my way to passive income… actively 😤💼",
+        "Building a legacy, starting with my Instagram bio 📲✨",
+        "Just waiting for my viral moment… any day now 🎥🔥",
+        "Launching a coaching program before I succeed myself 🎤📈",
+        "Future TEDx speaker, current motivational tweeter 📝🎧",
+        "Passive income is the goal, but I’m working 18-hour days 💻🔄",
+        "Personal development addict, self-made millionaire (in my head) 🧠💸",
+        "Scaling to 8 figures, just need to hit 5 first 💰📈",
+        "High-performance entrepreneur (still optimizing my performance) 🔥📈",
+        "Writing a book on success… once I achieve some 📚💰",
+        "Mindset mastery = money mastery (just waiting for proof) 💡💸",
+        "Hustling harder than the algorithm allows 🏆🔄",
+        "Legacy builder, empire scaler, current side hustle haver 📈👑",
+        "One mastermind session away from a breakthrough 💬💡",
+        "Writing my own success story… draft stage 📖🔥",
+        "Wealth mindset = wealth reality… any moment now 💰🧠",
+        "Scaling with intention (and a little bit of panic) 💡💼",
+        "The world’s next millionaire, stay tuned 📺💸",
+        "Entrepreneurial genius—just waiting for the results to show 🚀📊",
+        "Passive income wizard (so far, just spells) 🧙‍♂️💰",
+        "Running a six-figure business, just in reverse 📉💸",
+        "A financial success story in progress… chapter one 🏆📖",
+        "Soon-to-be millionaire, just checking my lottery numbers 🎟️💰"
+    ],
+    extreme: [
+        "Serial entrepreneur, parallel entrepreneur, quantum entrepreneur 🚀🧠",
+        "Self-made billionaire… just waiting for my first billion 💰🔜",
+        "Disrupting industries I haven't even entered yet 🔥📈",
+        "I turn ideas into empires… and tweets into income 💡💸",
+        "Wealth creation is my hobby, world domination is my goal 🌎💰",
+        "I don’t chase money, money chases me… slowly 🏃‍♂️💵",
+        "Grinding so hard, even my coffee is jealous ☕💼",
+        "Dropping truth bombs and future business models 💣📊",
+        "Manifesting my way onto the Forbes list 📖🏆",
+        "My network is my net worth, and I cold DM daily 📩🔥",
+        "Hustle guru, crypto wizard, mindset mogul, part-time sleeper 😤🚀",
+        "Investing in disruptive tech… mostly through motivational quotes 💡💸",
+        "I work 25/8 because 24/7 is for amateurs ⏳💼",
+        "Thinking at a billionaire level—now just need billionaire money 🧠💰",
+        "Every day is a TED Talk, I just haven’t been invited yet 🎤📈",
+        "Scaling businesses at a rate science can't explain 🚀🔬",
+        "Manifesting generational wealth while dodging bank fees 🔮💳",
+        "Wealth isn’t just a mindset, it’s my personality trait 💎💰",
+        "Crypto millionaire in 2021, motivational speaker in 2024 🏆📉",
+        "Hustling harder than the laws of physics allow ⚡💼",
+        "Too busy building my empire to answer your DMs 🏛️📩",
+        "Follow me for wealth secrets I haven’t figured out yet 🔥💰",
+        "The grind is relentless, but so is my vision 👁️💼",
+        "I don't have passive income yet, but my confidence is compounding 📈💡",
+        "Private jets, penthouses, and profits—just need the first two 🏡✈️"
+    ]
+};
+            const randomIndex = Math.floor(Math.random() * phrases[level].length);
+            bioOutput.textContent = phrases[level][randomIndex];
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          if (!localStorage.getItem("cookieConsent")) {
+            const banner = document.createElement("div");
+            banner.innerHTML = `
+              <div id="cookie-banner" style="
+                position: fixed; bottom: 20px; left: 20px; right: 20px;
+                background: black; color: white; padding: 15px;
+                border-radius: 10px; display: flex; justify-content: space-between;
+                align-items: center; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+                font-family: Arial, sans-serif; font-size: 14px; z-index: 1000;">
+                <span>This site uses cookies. Not the tasty kind, just the ones that make the internet work. Deal with it?</span>
+                <button id="cookie-accept" style="
+                  background: #ffc300; color: black; border: none; font-weight: bold;
+                  padding: 10px 15px; border-radius: 5px; cursor: pointer;">Yeah, Whatever...</button>
+              </div>
+            `;
+            document.body.appendChild(banner);
+      
+            document.getElementById("cookie-accept").addEventListener("click", function() {
+              localStorage.setItem("cookieConsent", "true");
+              document.getElementById("cookie-banner").remove();
+            });
+          }
+        });
+      </script>      
+</body>
+</html>

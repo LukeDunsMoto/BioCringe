@@ -18,11 +18,8 @@ You'll need Python installed. Then, simply clone the repo:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/BioCringe.git
+git clone https://github.com/LukeDunsMoto/BioCringe.git
 cd BioCringe
-
-# Install dependencies (if needed)
-pip install -r requirements.txt
 
 # Run it
 python bio_cringe.py
